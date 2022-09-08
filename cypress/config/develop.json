@@ -1,0 +1,10 @@
+{
+  "baseUrl" : "",
+  "chromeWebSecurity" : false,
+  "env": {
+    "username": "",
+    "password": "",
+    "apiUrl": "",
+    "api_token" : ""
+  }
+}

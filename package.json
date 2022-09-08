@@ -15,12 +15,33 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "cypress:open:qa": "npx cypress open --env configFile=qa",
+    "test:qa:cms": "npm run scripts:qa || npm run posttest:qa",
+    "pretest:qa:cms": "npm run clean:reports:qa",
+    "posttest:qa": "npm run combine-reports:qa && npm run generate-report:qa",
+    "scripts:qa": "cypress run --env configFile=qa --spec cypress/e2e/**",
+    "combine-reports:qa": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/qa/report.json",
+    "generate-report:qa": "marge cypress/reports/mochareports/qa/report.json -f report -o cypress/reports/mochareports/qa",
+    "clean:reports:qa": "rm -R -f cypress/reports/mochareports/qa && rm -R -f cypress/reports/mocha && mkdir cypress/reports/mochareports/qa",
+    "smoke:test:qa": "cypress run --env SUITE=smoke configFile=qa"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -34,5 +55,29 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack5": "^6.5.10",
+    "@storybook/manager-webpack5": "^6.5.10",
+    "@storybook/node-logger": "^6.5.10",
+    "@storybook/preset-create-react-app": "^4.1.2",
+    "@storybook/react": "^6.5.10",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "cypress": "^10.7.0",
+    "@cypress-audit/pa11y": "^1.3.1",
+    "cypress-axe": "^1.0.0",
+    "cypress-localstorage-commands": "^2.2.1",
+    "cypress-multi-reporters": "^1.5.0",
+    "mocha": "^9.2.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0",
+    "prop-types": "^15.8.1",
+    "webpack": "^5.74.0"
   }
 }

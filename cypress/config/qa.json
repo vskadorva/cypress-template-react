@@ -1,0 +1,10 @@
+{
+  "baseUrl" : "http://localhost:6006",
+  "chromeWebSecurity" : false,
+  "env": {
+    "username": "",
+    "password": "",
+    "apiUrl": "",
+    "api_token" : ""
+  }
+}
