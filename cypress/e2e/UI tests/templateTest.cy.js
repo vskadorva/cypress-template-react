@@ -15,11 +15,12 @@ describe('template Test suite',
         xit('runs test case with filter <smoke>', () => {
 
         })
-        it('runs test case without any filter', () => {
-            cy.visit('/iframe.html?id=example-button--primary')
-            cy.get('[data-cy="button"]')
-                .should('be.visible')
-                .invoke('css', 'background')
-                .should('include', 'rgb(30, 167, 253)')
-        })
+            it('loads Button in storybook', function() {
+                cy.visit('/iframe.html?id=example-button--primary')
+                cy.contains('Button');
+                cy.get('[data-cy="button"]')
+                    .should('be.visible')
+                    .invoke('css', 'background')
+                    .should('include', 'rgb(30, 167, 253)')
+            });
     })
