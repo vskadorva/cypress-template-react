@@ -32,6 +32,5 @@ cypress/screenshots
 cypress/videos
 cypress/config/.*.json
 accessibility/
-package-lock.json
 xunit.xml
 cypress/reports
