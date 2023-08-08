@@ -26,7 +26,8 @@
     "combine-reports:qa": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/qa/report.json",
     "generate-report:qa": "marge cypress/reports/mochareports/qa/report.json -f report -o cypress/reports/mochareports/qa",
     "clean:reports:qa": "rm -R -f cypress/reports/mochareports/qa && rm -R -f cypress/reports/mocha && mkdir cypress/reports/mochareports/qa",
-    "smoke:test:qa": "cypress run --env SUITE=smoke configFile=qa"
+    "smoke:test:qa": "cypress run --env SUITE=smoke configFile=qa",
+    "cypress:component:run": "npx cypress run --component"
   },
   "eslintConfig": {
     "extends": [
